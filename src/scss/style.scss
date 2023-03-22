@@ -1,0 +1,554 @@
+@import 'utils/normalize';
+@import 'utils/vars';
+@import 'utils/mixins';
+@import 'utils/fonts';
+
+
+body {
+  min-height: 100%;
+  background: #ffffff;
+}
+
+a {
+  font: inherit;
+  color: #3052D8;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.button {
+  text-decoration: none;
+  height: 48px;
+  padding: 0 54px;
+  border: 2px solid #3052D8;
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  font: 16px/1 $fontSemibold;
+  transition: .2s all linear;
+
+  @include media('min', $tablet) {
+    height: sizeTablet(69);
+    padding: 0 sizeTablet(64);
+    border-radius: sizeTablet(34);
+    font-size: sizeTablet(23);
+  }
+
+  @include media('min', $desktop) {
+    height: 69px;
+    padding: 0 64px;
+    border-radius: 34px;
+    font-size: 23px;
+  }
+
+  &:hover {
+    background: #3052D8;
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
+
+.section {
+  padding: 83px 22px 100px;
+
+  @include media('min', $tablet) {
+    margin: 0 auto;
+    padding: sizeTablet(152) 0 sizeTablet(149);
+    width: sizeTablet(1320);
+  }
+
+  @include media('min', $desktop) {
+    padding: 152px 0 149px;
+    width: 1320px;
+  }
+}
+
+.block-name {
+  margin-bottom: 40px;
+  font: 34px/114% $fontBold;
+  color: $titleColor;
+
+  @include media('min', $tablet) {
+    margin-bottom: sizeTablet(60);
+    max-width: sizeTablet(742);
+    font: #{sizeTablet(70)}/127% $fontBold;
+  }
+
+  @include media('min', $desktop) {
+    margin-bottom: 60px;
+    max-width: 742px;
+    font-size: 70px;
+  }
+}
+
+.steps {
+  position: relative;
+
+  &__list {
+    list-style: none;
+    counter-reset: num;
+    display: flex;
+    flex-direction: column;
+
+    @include media('min', $tablet) {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    position: relative;
+    top: -7px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+
+    @include media('min', $tablet) {
+      top: 0;
+      flex-direction: column;
+    }
+
+    & + & {
+      margin-top: 53px;
+
+      @include media('min', $tablet) {
+        margin-top: 0;
+        margin-left: sizeTablet(58);
+      }
+
+      @include media('min', $desktop) {
+        margin-left: 58px;
+      }
+    }
+
+    &:before {
+      content: counter(num);
+      counter-increment: num;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 51px;
+      height: 51px;
+      border-radius: 50%;
+      background: #3052D8;
+      font: 22px/127% $fontBold;
+      color: #ffffff;
+
+      @include media('min', $tablet) {
+        width: sizeTablet(51);
+        height: sizeTablet(51);
+        font: #{sizeTablet(22)}/127% $fontBold;
+      }
+
+      @include media('min', $desktop) {
+        width: 51px;
+        height: 51px;
+        font-size: 22px;
+      }
+    }
+
+    &:not(&:last-child):after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 25px;
+      z-index: 1;
+      width: 2px;
+      height: 100%;
+      background: #3052D8;
+      box-sizing: content-box;
+      padding-bottom: 53px;
+
+      @include media('min', $tablet) {
+        top: sizeTablet(25);
+        left: 0;
+        width: 100%;
+        height: 2px;
+        padding-bottom: 0;
+        padding-right: sizeTablet(58);
+      }
+
+      @include media('min', $desktop) {
+        top: 25px;
+        padding-right: 58px;
+      }
+    }
+  }
+
+  &__text {
+    flex: 1 1;
+    margin: 0 0 0 33px;
+    font: 19px/131% $fontRegular;
+
+    @include media('min', $tablet) {
+      margin: 20px 0 0;
+      font: #{sizeTablet(22)}/127% $fontRegular;
+    }
+
+    @include media('min', $desktop) {
+      font-size: 22px;
+    }
+  }
+}
+
+.questions {
+  margin-top: 97px;
+
+  @include media('min', $tablet) {
+    margin-top: sizeTablet(189);
+  }
+
+  @include media('min', $desktop) {
+    margin-top: 189px;
+  }
+
+  &__title-1 {
+    margin-bottom: 21px;
+    font: 25px/117% $fontBold;
+    color: $textColor;
+
+    @include media('min', $tablet) {
+      margin-bottom: sizeTablet(47);
+      font: #{sizeTablet(36)}/117% $fontBold;
+    }
+
+    @include media('min', $desktop) {
+      margin-bottom: 47px;
+      font-size: 36px;
+    }
+  }
+
+  &__sections {
+    margin: 0 -22px 40px;
+
+    @include media('min', $tablet) {
+      margin: 0 0 sizeTablet(130);
+    }
+
+    @include media('min', $desktop) {
+      margin: 0 0 130px;
+    }
+  }
+
+  &__block {
+    position: relative;
+
+    & + & {
+      display: none;
+    }
+  }
+
+  &__title-2 {
+    margin-bottom: 20px;
+    font: 30px/117% $fontBold;
+    color: $textColor;
+
+    @include media('min', $tablet) {
+      margin-bottom: sizeTablet(42);
+      font: #{sizeTablet(50)}/117% $fontBold;
+    }
+
+    @include media('min', $desktop) {
+      margin-bottom: 42px;
+      font-size: 50px;
+    }
+  }
+
+  &__another {
+    margin: 38px auto 0;
+    text-align: center;
+
+    @include media('min', $tablet) {
+      margin-top: sizeTablet(64);
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 64px;
+    }
+  }
+}
+
+.q-sections {
+  position: relative;
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  &__item {
+    flex: 0 1 auto;
+
+    &:first-child {
+      margin-left: 22px;
+
+      @include media('min', $tablet) {
+        margin: 0;
+      }
+    }
+
+    &:last-child {
+      margin-right: 22px;
+
+      @include media('min', $tablet) {
+        margin: 0;
+      }
+    }
+
+    & + & {
+      margin-left: 10px;
+
+      @include media('min', $tablet) {
+        margin-left: sizeTablet(13);
+      }
+
+      @include media('min', $desktop) {
+        margin-left: 13px;
+      }
+    }
+  }
+}
+
+.q-sections-item {
+  flex: 0 0 158px;
+  position: relative;
+  padding: 14px;
+  background: #3052D8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  transition: 0.3s background-color linear;
+
+  @include media('min', $tablet) {
+    flex: 1 1;
+    padding: sizeTablet(14);
+    border-radius: sizeTablet(10);
+  }
+
+  @include media('min', $desktop) {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  &:not(&_active) {
+    cursor: pointer;
+
+    &:hover {
+      background: #4367F6;
+    }
+  }
+
+  &_active {
+    background: #E1E8F8;
+    color: #08113F;
+  }
+
+  &__img {
+    position: relative;
+  }
+
+  svg {
+    width: auto;
+    height: 40px;
+
+    @include media('min', $tablet) {
+      height: sizeTablet(50);
+    }
+
+    @include media('min', $desktop) {
+      height: 50px;
+    }
+  }
+
+  path {
+    fill: #ffffff;
+  }
+
+  &_active path {
+    fill: #08113F;
+  }
+
+  &__name {
+    margin-top: 11px;
+    font: 16px/131% $fontSemibold;
+
+    @include media('min', $tablet) {
+      margin-top: sizeTablet(18);
+      font: #{sizeTablet(22)}/127% 'ProximaNova-Semibold', sans-serif;
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 18px;
+      font-size: 22px;
+    }
+  }
+}
+
+.q-list {
+  position: relative;
+
+  &__item {
+    padding: 20px 0;
+    border-bottom: 1px solid #3052D8;
+
+    @include media('min', $tablet) {
+      padding: sizeTablet(23) sizeTablet(27);
+    }
+
+    @include media('min', $desktop) {
+      padding: 23px 27px;
+    }
+
+    &:first-child {
+      border-top: 1px solid #3052D8;
+    }
+  }
+}
+
+.q-item {
+  position: relative;
+
+  &__name {
+    position: relative;
+    padding-right: 57px;
+    font: 22px/128% $fontBold;
+    color: $titleColor;
+    cursor: pointer;
+    transition: .2s opacity linear;
+
+    @include media('min', $tablet) {
+      padding-right: sizeTablet(160);
+      font: #{sizeTablet(22)}/128% $fontBold;
+    }
+
+    @include media('min', $desktop) {
+      padding-right: 160px;
+      font-size: 22px;
+    }
+
+    &:hover {
+      opacity: .8;
+
+      &:after {
+        opacity: .8;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -1px;
+      right: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: url('../images/q-arrow.svg') no-repeat;
+      background-size: 100% 100%;
+      transition: .2s all linear;
+
+      @include media('min', $tablet) {
+        top: sizeTablet(-2);
+        width: sizeTablet(33);
+        height: sizeTablet(33);
+      }
+
+      @include media('min', $desktop) {
+        top: -2px;
+        width: 33px;
+        height: 33px;
+      }
+    }
+
+    &_active:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__hide {
+    overflow: hidden;
+    height: 0;
+    transition: .3s height linear;
+  }
+
+  &__text {
+    padding: 20px 57px 0 0;
+    font: 19px/126% $fontRegular;
+    color: $textColor;
+
+    @include media('min', $tablet) {
+      padding: sizeTablet(14) sizeTablet(160) 0 0;
+      font: #{sizeTablet(22)}/128% $fontRegular;
+    }
+
+    @include media('min', $desktop) {
+      padding: 14px 160px 0 0;
+      font-size: 22px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    font: inherit;
+
+    li {
+      position: relative;
+      padding-left: 18px;
+      font: inherit;
+
+      @include media('min', $tablet) {
+        padding-left: sizeTablet(18);
+      }
+
+      @include media('min', $desktop) {
+        padding-left: 18px;
+      }
+
+      &:before {
+        color: #3052d8;
+        content: "\00B7";
+        display: block;
+        font: 55px/0 sans;
+        left: -5px;
+        position: absolute;
+        top: 12px;
+
+        @include media('min', $tablet) {
+          font: #{sizeTablet(55)}/0 sans;
+          left: sizeTablet(-5);
+          top: sizeTablet(15);
+        }
+
+        @include media('min', $desktop) {
+          font: 55px/0 sans;
+          left: -5px;
+          top: 15px;
+        }
+      }
+    }
+
+    li + li {
+      margin-top: 20px;
+
+      @include media('min', $tablet) {
+        margin-top: sizeTablet(20);
+      }
+
+      @include media('min', $desktop) {
+        margin-top: 20px;
+      }
+    }
+  }
+}

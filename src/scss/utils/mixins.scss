@@ -1,0 +1,29 @@
+// Адаптив @include media('min', $mobile) {} @include media('min', $tablet) {} @include media('min', $desktop) {}
+@mixin media($minmax, $width) {
+  @if $minmax == max {$width: $width - 1};
+  @media only screen and (#{$minmax}-width: $width) {
+    @content;
+  }
+}
+
+@mixin mediaSection($min, $max) {
+  @media only screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+// Подключение шрифтов
+@mixin font-face($font, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $font;
+    font-weight: $weight;
+    font-style: $style;
+    src: url("fonts/#{$font}.eot");
+    src: url("fonts/#{$font}.eot?#iefix") format('embedded-opentype'), url("fonts/#{$font}.woff") format('woff'), url("fonts/#{$font}.ttf") format('truetype');
+  }
+}
+
+// Расчет размера для резиновой верстки
+@function sizeTablet($size) {
+  @return (ceil((100 / 1440 * $size) * 10000) / 10000) * 1vw;
+}
