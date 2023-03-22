@@ -6,7 +6,11 @@
 
 body {
   min-height: 100%;
-  background: #ffffff;
+  background: #F9F9F9;
+
+  @include media('min', $tablet) {
+    background: #ffffff;
+  }
 }
 
 a {
@@ -17,6 +21,10 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.text-blue {
+  color: #3052D8;
 }
 
 .button {
@@ -196,6 +204,21 @@ a {
 
     @include media('min', $desktop) {
       font-size: 22px;
+    }
+  }
+
+  &__note {
+    margin-top: 40px;
+    font: 18px/127% $fontLight;
+
+    @include media('min', $tablet) {
+      margin-top: sizeTablet(55);
+      font-size: sizeTablet(21);
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 55px;
+      font-size: 21px;
     }
   }
 }
