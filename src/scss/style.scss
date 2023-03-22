@@ -137,13 +137,15 @@ a {
       height: 51px;
       border-radius: 50%;
       background: #3052D8;
-      font: 22px/127% $fontBold;
+      font-family: $fontBold;
+      font-size: 22px;
+      line-height: normal;
       color: #ffffff;
 
       @include media('min', $tablet) {
         width: sizeTablet(51);
         height: sizeTablet(51);
-        font: #{sizeTablet(22)}/127% $fontBold;
+        font-size: sizeTablet(22);
       }
 
       @include media('min', $desktop) {
