@@ -50,10 +50,8 @@ function block_questions(e) {
 
   if (e.target.closest('.q-sections-item').classList.contains('q-sections-item_active')) return false;
 
-  e.target
-
   let id_old = e.target.closest('.q-sections__wrapper').querySelector('.q-sections-item_active').getAttribute('data-id'),
-      block_old = document.getElementById(id_old);
+      block_old = document.getElementById(id_old),
       id_new = e.target.closest('.q-sections-item').getAttribute('data-id'),
       block_new = document.getElementById(id_new);
 
